@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Arindra Das">
+    <title>indra's work</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="/docs/5.2/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="manifest" href="/docs/5.2/assets/img/favicons/manifest.json">
+    <link rel="mask-icon" href="/docs/5.2/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
+    <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon.ico">
+    <meta name="theme-color" content="#712cf9">
+    <!-- Font -->
+    <link href="http://fonts.cdnfonts.com/css/poppins" rel="stylesheet">
+    <link href="http://fonts.cdnfonts.com/css/baskerville" rel="stylesheet">
+    <!-- Custom -->
+    <link href="./casestudy/css/folio.css" rel="stylesheet">
+    
+
+  </head>
+<button
+  class="theme-toggle"
+  onclick="toggleTheme()"
+  aria-label="Toggle light or dark mode"
+  title="Toggle theme"
+>
+  <span id="theme-icon" aria-hidden="true">
+    <!-- Default is sun icon -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M12 4.5a1 1 0 0 1 1-1h1a1 1 0 1 1 0 2h-1a1 1 0 0 1-1-1Zm6.364 1.636a1 1 0 1 1 1.414-1.414l.707.707a1 1 0 0 1-1.414 1.414l-.707-.707ZM19.5 11a1 1 0 1 1 0 2h-1a1 1 0 1 1 0-2h1ZM5.636 6.136a1 1 0 0 1 1.414-1.414l.707.707a1 1 0 0 1-1.414 1.414l-.707-.707ZM6 12a6 6 0 1 1 12 0 6 6 0 0 1-12 0Zm6 9.5a1 1 0 0 1-1 1h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 1 1Zm6.364-1.636a1 1 0 1 1-1.414 1.414l-.707-.707a1 1 0 0 1 1.414-1.414l.707.707ZM4.5 13a1 1 0 1 1 0-2h1a1 1 0 1 1 0 2h-1Zm1.636 6.364a1 1 0 1 1-1.414-1.414l.707-.707a1 1 0 1 1 1.414 1.414l-.707.707Z"/>
+    </svg>
+  </span>
+</button>
+
+<script>
+  const icon = document.getElementById("theme-icon");
+
+  const sunIcon = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M12 4.5a1 1 0 0 1 1-1h1a1 1 0 1 1 0 2h-1a1 1 0 0 1-1-1Zm6.364 1.636a1 1 0 1 1 1.414-1.414l.707.707a1 1 0 0 1-1.414 1.414l-.707-.707ZM19.5 11a1 1 0 1 1 0 2h-1a1 1 0 1 1 0-2h1ZM5.636 6.136a1 1 0 0 1 1.414-1.414l.707.707a1 1 0 0 1-1.414 1.414l-.707-.707ZM6 12a6 6 0 1 1 12 0 6 6 0 0 1-12 0Zm6 9.5a1 1 0 0 1-1 1h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 1 1Zm6.364-1.636a1 1 0 1 1-1.414 1.414l-.707-.707a1 1 0 0 1 1.414-1.414l.707.707ZM4.5 13a1 1 0 1 1 0-2h1a1 1 0 1 1 0 2h-1Zm1.636 6.364a1 1 0 1 1-1.414-1.414l.707-.707a1 1 0 1 1 1.414 1.414l-.707.707Z"/>
+    </svg>`;
+
+  const moonIcon = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M21 12.79A9 9 0 0 1 12.79 3a1 1 0 0 0-1.35 1.15 7 7 0 1 0 8.41 8.41 1 1 0 0 0 1.15-1.35Z"/>
+    </svg>`;
+
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute("data-theme");
+    const next = current === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    localStorage.setItem("theme", next);
+    icon.innerHTML = next === "dark" ? moonIcon : sunIcon;
+  }
+
+  // On load: apply saved theme or system preference
+  (function () {
+    const saved = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const theme = saved || (prefersDark ? "dark" : "light");
+    document.documentElement.setAttribute("data-theme", theme);
+    icon.innerHTML = theme === "dark" ? moonIcon : sunIcon;
+  })();
+</script>
+
+
+
+
+  <body>
+   
+       
+      <main>
+         <div class="container">
+         <div class="row">
+  
+         <div class="col-sm-6 offset-sm-4">
+           <br>
+        <br>
+        <br>
+        <h1>Arindra Das</h1>
+        <p>Design | Research | Product | Strategy</p>
+        </div>
+        <br>
+        <br>
+        <!-- 
+ <h3 style="font-size: 24px;" class="offset-sm-2 col-sm-6">Designer and researcher tweaking systems to make it harmonious with our nervous system and planet
+  through observing and understanding patterns around us.</h3> -->
+        <p class="col-sm-6 offset-sm-4"> 
+
+       <br>
+
+<br> 
+       I’m a design leader and strategist with a focus on complex and highly regulated environments. My practice spans service design, interaction design, product strategy and research, helping organisations navigate complexity and create inclusive, resilient services.
+<br> <br> 
+My work includes zero to one launches, large-scale redesigns and critical MVPs. I have led design strategy and delivery for national programmes, scaling design systems, building teams and working with senior leaders across policy, product and technology. Alongside this I stay close to the craft, prototyping, mapping journeys, evolving design systems and grounding decisions in research. I also bring experience designing for algorithmic and automated systems, where the challenge is to make data-driven services transparent, usable and trusted.
+<br> <br> 
+I hold a Master’s in Human–Computer Interaction from UCL and began my career in engineering, which gives me a grounding in both technical systems and human-centred approaches.
+
+      </p>
+
+        <!-- <br> 
+   I’m a designer and strategist specialising in complex and highly regulated environments. My work sits at the overlap of service design, interaction design, product strategy, and research — helping teams navigate complexity and deliver thoughtful, inclusive services.
+  <br> <br>
+
+    I’ve led and contributed to zero-to-one product launches, large-scale service redesigns, and critical MVPs — balancing the big picture with hands-on design craft.
+     <br> <br>
+   I hold a Master’s in Human-Computer Interaction from UCL, and started out in engineering before moving into design.
+
+  -->
+  
+        <!-- <hr> -->
+        
+         <div class="row">
+  
+         <div class="col-sm-6 offset-sm-4 ">
+          <br>
+        <br>
+        <p class="section-title">Work</p>
+        <p class="section-sub-title">What I’ve been working on over the last decade</p>
+
+       
+          
+            <p> Designing single sign-on, digital identity, and verifiable credentials for an inclusive and sustainable future
+            </p>
+           
+        
+           <p> <a href="pay.html" class="link-colored"> Designing resilient payment infrastructure for the UK government</a> (Case study) 
+          </p>
+          
+            <p> 
+         Building the front door for UK Government (GOV.UK)
+            </p>
+           
+      
+            <p> <a href="odi.html" class="link-colored"> Securing our National Archives for Future Generations</a> (Case study) 
+     </p>
+          
+            <!-- <img src="./img/di.png" class="img-fluid portfolio-card-image" alt="Cover page of the ODI report, National Data Strategy published on September 2021 ">
+        -->
+                 <p><a href="kon.html" class="link-colored"> Building fair AI model through design patterns</a> (Talk summary)  </p>
+              
+                 
+            <p> 
+<a href="insurance.html" class="link-colored">
+              From paper to platform: Modernising insurance workflows with brokers, for brokers
+                </a>  (Case study)
+           
+            </p>
+        
+            <p> 
+          Future of care - designing for relationships
+            </p>
+          
+ <p> Designing trust and transformation for buy now, pay later
+        </p>
+
+
+      <br><br><br>
+         <p class="section-title">Writing</p>
+        <p class="section-sub-title">  Blog posts, articles and publications</p>
+       
+
+
+ <p> <a href="https://gds.blog.gov.uk/2025/04/01/creating-interactive-design-documentation-for-gov-uk-one-login/" target="_blank" class="link-colored"> Creating interactive design documentation for GOV.UK One Login [GDS blogs]</a>
+     </p>
+       
+      <p> <a href="https://designnotes.blog.gov.uk/2022/08/02/shaping-your-design-history-how-we-got-here-and-whats-next/" target="_blank" class="link-colored"> Shaping your design history: how we got here and what's next [GDS blogs]</a>
+     </p>
+
+      <p><a href="https://theodi.org/insights/reports/archangel-guaranteeing-the-integrity-of-digital-archives/" target="_blank">Guaranteeing the integrity of digital archives [ODI]</a></p>
+                        <p><a href="https://theodi.org/insights/reports/improving-data-and-information-access-in-regulated-sectors-report/" target="_blank">Improving data and information access in regulated sectors [ODI]</a></p>
+                        <p><a href="https://ieeexplore.ieee.org/document/8962204/authors#authors" target="_blank">Tamper-Proofing Video With Hierarchical Attention Autoencoder Hashing on Blockchain [IEEE]</a></p>
+                        <p><a href="https://ukstories.microsoft.com/features/microsoft-is-trying-to-ease-the-uks-social-care-problem-by-using-technology/" target="_blank">Microsoft is trying to ease the UK’s social care problem by using technology [Microsoft Press]</a></p>
+                        <p><a href="">Face parts prediction using artificial neural network from fingerprint [Thesis - IEEE proposal]</a></p>
+                        <p><a href="">Towards designing an interactive multi-player serious game for business education [ACM proposal]</a></p>
+              
+                        
+                        
+     
+
+
+          <br><br><br><br><br>
+ 
+          
+          </div>
+          </div>
+      </main>
+      <footer class="">
+          <hr>
+        <!-- <div id="wcb" class="carbonbadge"></div><script src="https://unpkg.com/website-carbon-badges@1.1.3/b.min.js" defer></script> -->
+        <p class="text-center">
+          <small> Handcoded (Build v0.34) with Carbon-free software. No data is collected when using this site. No cookies are served. Server runs on renewable energy <a href="https://github.blog/2021-04-22-environmental-sustainability-github/"></a>. </small>
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>

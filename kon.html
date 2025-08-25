@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Arindra Das">
+    <title>indra's work</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="/docs/5.2/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="manifest" href="/docs/5.2/assets/img/favicons/manifest.json">
+    <link rel="mask-icon" href="/docs/5.2/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
+    <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon.ico">
+    <meta name="theme-color" content="#712cf9">
+    <!-- Font -->
+    <link href="http://fonts.cdnfonts.com/css/poppins" rel="stylesheet">
+    <link href="http://fonts.cdnfonts.com/css/baskerville" rel="stylesheet">
+    <!-- Custom -->
+    <link href="./casestudy/css/folio.css" rel="stylesheet">
+    
+
+  </head>
+<button
+  class="theme-toggle"
+  onclick="toggleTheme()"
+  aria-label="Toggle light or dark mode"
+  title="Toggle theme"
+>
+  <span id="theme-icon" aria-hidden="true">
+    <!-- Default is sun icon -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M12 4.5a1 1 0 0 1 1-1h1a1 1 0 1 1 0 2h-1a1 1 0 0 1-1-1Zm6.364 1.636a1 1 0 1 1 1.414-1.414l.707.707a1 1 0 0 1-1.414 1.414l-.707-.707ZM19.5 11a1 1 0 1 1 0 2h-1a1 1 0 1 1 0-2h1ZM5.636 6.136a1 1 0 0 1 1.414-1.414l.707.707a1 1 0 0 1-1.414 1.414l-.707-.707ZM6 12a6 6 0 1 1 12 0 6 6 0 0 1-12 0Zm6 9.5a1 1 0 0 1-1 1h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 1 1Zm6.364-1.636a1 1 0 1 1-1.414 1.414l-.707-.707a1 1 0 0 1 1.414-1.414l.707.707ZM4.5 13a1 1 0 1 1 0-2h1a1 1 0 1 1 0 2h-1Zm1.636 6.364a1 1 0 1 1-1.414-1.414l.707-.707a1 1 0 1 1 1.414 1.414l-.707.707Z"/>
+    </svg>
+  </span>
+</button>
+
+<script>
+  const icon = document.getElementById("theme-icon");
+
+  const sunIcon = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M12 4.5a1 1 0 0 1 1-1h1a1 1 0 1 1 0 2h-1a1 1 0 0 1-1-1Zm6.364 1.636a1 1 0 1 1 1.414-1.414l.707.707a1 1 0 0 1-1.414 1.414l-.707-.707ZM19.5 11a1 1 0 1 1 0 2h-1a1 1 0 1 1 0-2h1ZM5.636 6.136a1 1 0 0 1 1.414-1.414l.707.707a1 1 0 0 1-1.414 1.414l-.707-.707ZM6 12a6 6 0 1 1 12 0 6 6 0 0 1-12 0Zm6 9.5a1 1 0 0 1-1 1h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 1 1Zm6.364-1.636a1 1 0 1 1-1.414 1.414l-.707-.707a1 1 0 0 1 1.414-1.414l.707.707ZM4.5 13a1 1 0 1 1 0-2h1a1 1 0 1 1 0 2h-1Zm1.636 6.364a1 1 0 1 1-1.414-1.414l.707-.707a1 1 0 1 1 1.414 1.414l-.707.707Z"/>
+    </svg>`;
+
+  const moonIcon = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M21 12.79A9 9 0 0 1 12.79 3a1 1 0 0 0-1.35 1.15 7 7 0 1 0 8.41 8.41 1 1 0 0 0 1.15-1.35Z"/>
+    </svg>`;
+
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute("data-theme");
+    const next = current === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    localStorage.setItem("theme", next);
+    icon.innerHTML = next === "dark" ? moonIcon : sunIcon;
+  }
+
+  // On load: apply saved theme or system preference
+  (function () {
+    const saved = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const theme = saved || (prefersDark ? "dark" : "light");
+    document.documentElement.setAttribute("data-theme", theme);
+    icon.innerHTML = theme === "dark" ? moonIcon : sunIcon;
+  })();
+</script>
+
+
+
+<body>
+
+
+<div class="container">
+
+  <main>
+   
+
+    <br>
+      <br>
+      <br>
+           <div class="row">
+    
+
+ <div class="col-sm-6 offset-sm-4 ">
+      <a href="folio.html">
+        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" /> </svg> -->
+        Home
+      </a>
+      <!-- <a href="portfolio-odi.html" class="link-dark">
+        ODI projects
+      </a>/ -->
+      <!-- <a href="pay.html" class="mute" style="text-decoration:none;">
+       GOV.UK Payments
+     </a> -->
+      <br>    
+      <br>    
+      <br>
+</div>
+
+</div>
+
+
+
+
+  <br>
+
+     <div class="row">
+    
+
+ <div class="col-sm-6 offset-sm-4 ">
+  
+ <h2>Building fair AI model through design patterns</h2>
+                <p>12 July 2018</p>
+                <p>Recently, I was recognised at the BIBA Insurance Forum for highlighting algorithmic discrimination in risk models
+                    that inadvertently led to inequitable outcomes. I also shared my work on addressing this issue and creating fairer
+                    models for risk assessment.</p>
+                <p>Last year, I noticed something troubling: brokers in specific regions, particularly in areas like Birmingham and
+                    Bradford, were struggling to provide competitive quotes. A closer examination revealed that algorithms were
+                    incorrectly tagging some clients as high-risk, often due to name-based biases embedded in the risk models. Clients
+                    with names resembling those on sanctions lists faced inflated premiums, a bias that disproportionately affected
+                    communities with Southeast Asian backgrounds.</p>
+                <p>I collaborated closely with our data science team to address these misclassifications. By examining each stage of the
+                    insurance quoting process and the data points driving these models, we questioned every decision point,
+                    investigating how even minor design choices could lead to inequitable outcomes. Out of this process, three key
+                    design patterns emerged to embed transparency and flexibility directly into the system:</p>
+                
+                <h4>Mindful friction</h4>
+                <p>Our algorithms needed thoughtful checkpoints—what we termed “graceful friction.” By introducing moments where brokers
+                    were prompted to review flagged data, we created a natural pause, giving human judgment a chance to supplement
+                    machine classification. These checkpoints didn’t slow brokers down but instead fostered understanding and critical
+                    evaluation of the AI’s decisions.</p>
+                
+                <h4>Data provenance</h4>
+                <p>Understanding the origin and journey of data is essential for making informed adjustments. With data provenance,
+                    brokers could trace how each piece of information contributed to a client’s risk score. This transparency clarified
+                    the basis of classifications and empowered brokers to make fairer, client-centered adjustments when necessary.</p>
+                
+                <h4>Design interventions through warnings</h4>
+                <p>I designed warnings as subtle yet effective design interventions. These warnings flagged potential
+                    misclassifications, signaling brokers to review and, if necessary, adjust the AI’s risk assessments. This approach
+                    not only gave brokers a measure of control but also improved the model’s accountability, ensuring that no single
+                    factor disproportionately influenced a client’s premium.</p>
+                
+                <p>These patterns weren’t mere tweaks; they restored agency to brokers, enabling them to address biases actively and
+                    foster fairer outcomes.</p>
+                
+                <p>Algorithms play a central role in setting premiums and assessing risk—a task that’s critical, complex, and often
+                    opaque. Ensuring fairness in technology requires a commitment to transparency and adaptability, allowing systems to
+                    learn and grow. It was not about “fixing” biases but creating a dynamic process where AI evolves to better
+                    understand the communities it serves.</p>
+                
+                <p>Within just four months, brokers using these tools managed to sell £1.2 million in premiums, showcasing both the
+                    ethical and business benefits of an inclusive design approach.</p>
+                <br><br>
+                <p>So here’s the question we should all be asking: In a world increasingly driven by algorithms, how do we keep sight of
+                    the individual stories behind each data point?</p>
+
+     
+
+        </div>
+          </div>
+
+          
+      </main>
+       <footer class="">
+          <hr>
+        <!-- <div id="wcb" class="carbonbadge"></div><script src="https://unpkg.com/website-carbon-badges@1.1.3/b.min.js" defer></script> -->
+        <p class="text-center">
+          <small> Handcoded (Build v0.34) with Carbon-free software. No data is collected when using this site. No cookies are served. Server runs on renewable energy <a href="https://github.blog/2021-04-22-environmental-sustainability-github/"></a>. </small>
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
+
+
+
+
+

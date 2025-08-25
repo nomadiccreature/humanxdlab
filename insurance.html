@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Arindra Das">
+    <title>indra's work</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="/docs/5.2/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="manifest" href="/docs/5.2/assets/img/favicons/manifest.json">
+    <link rel="mask-icon" href="/docs/5.2/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
+    <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon.ico">
+    <meta name="theme-color" content="#712cf9">
+    <!-- Font -->
+    <link href="http://fonts.cdnfonts.com/css/poppins" rel="stylesheet">
+    <link href="http://fonts.cdnfonts.com/css/baskerville" rel="stylesheet">
+    <!-- Custom -->
+    <link href="./casestudy/css/folio.css" rel="stylesheet">
+    
+
+  </head>
+<button
+  class="theme-toggle"
+  onclick="toggleTheme()"
+  aria-label="Toggle light or dark mode"
+  title="Toggle theme"
+>
+  <span id="theme-icon" aria-hidden="true">
+    <!-- Default is sun icon -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M12 4.5a1 1 0 0 1 1-1h1a1 1 0 1 1 0 2h-1a1 1 0 0 1-1-1Zm6.364 1.636a1 1 0 1 1 1.414-1.414l.707.707a1 1 0 0 1-1.414 1.414l-.707-.707ZM19.5 11a1 1 0 1 1 0 2h-1a1 1 0 1 1 0-2h1ZM5.636 6.136a1 1 0 0 1 1.414-1.414l.707.707a1 1 0 0 1-1.414 1.414l-.707-.707ZM6 12a6 6 0 1 1 12 0 6 6 0 0 1-12 0Zm6 9.5a1 1 0 0 1-1 1h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 1 1Zm6.364-1.636a1 1 0 1 1-1.414 1.414l-.707-.707a1 1 0 0 1 1.414-1.414l.707.707ZM4.5 13a1 1 0 1 1 0-2h1a1 1 0 1 1 0 2h-1Zm1.636 6.364a1 1 0 1 1-1.414-1.414l.707-.707a1 1 0 1 1 1.414 1.414l-.707.707Z"/>
+    </svg>
+  </span>
+</button>
+
+<script>
+  const icon = document.getElementById("theme-icon");
+
+  const sunIcon = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M12 4.5a1 1 0 0 1 1-1h1a1 1 0 1 1 0 2h-1a1 1 0 0 1-1-1Zm6.364 1.636a1 1 0 1 1 1.414-1.414l.707.707a1 1 0 0 1-1.414 1.414l-.707-.707ZM19.5 11a1 1 0 1 1 0 2h-1a1 1 0 1 1 0-2h1ZM5.636 6.136a1 1 0 0 1 1.414-1.414l.707.707a1 1 0 0 1-1.414 1.414l-.707-.707ZM6 12a6 6 0 1 1 12 0 6 6 0 0 1-12 0Zm6 9.5a1 1 0 0 1-1 1h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 1 1Zm6.364-1.636a1 1 0 1 1-1.414 1.414l-.707-.707a1 1 0 0 1 1.414-1.414l.707.707ZM4.5 13a1 1 0 1 1 0-2h1a1 1 0 1 1 0 2h-1Zm1.636 6.364a1 1 0 1 1-1.414-1.414l.707-.707a1 1 0 1 1 1.414 1.414l-.707.707Z"/>
+    </svg>`;
+
+  const moonIcon = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M21 12.79A9 9 0 0 1 12.79 3a1 1 0 0 0-1.35 1.15 7 7 0 1 0 8.41 8.41 1 1 0 0 0 1.15-1.35Z"/>
+    </svg>`;
+
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute("data-theme");
+    const next = current === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    localStorage.setItem("theme", next);
+    icon.innerHTML = next === "dark" ? moonIcon : sunIcon;
+  }
+
+  // On load: apply saved theme or system preference
+  (function () {
+    const saved = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const theme = saved || (prefersDark ? "dark" : "light");
+    document.documentElement.setAttribute("data-theme", theme);
+    icon.innerHTML = theme === "dark" ? moonIcon : sunIcon;
+  })();
+</script>
+
+
+
+<body>
+
+
+<div class="container">
+
+  <main>
+   
+
+    <br>
+      <br>
+      <br>
+           <div class="row">
+    
+
+ <div class="col-sm-6 offset-sm-4 ">
+      <a href="folio.html">
+        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" /> </svg> -->
+        Home
+      </a>
+      <!-- <a href="portfolio-odi.html" class="link-dark">
+        ODI projects
+      </a>/ -->
+      <!-- <a href="pay.html" class="mute" style="text-decoration:none;">
+       GOV.UK Payments
+     </a> -->
+      <br>    
+      <br>    
+      <br>
+</div>
+
+</div>
+
+
+
+
+  <br>
+
+     <div class="row">
+    
+
+ <div class="col-sm-6 offset-sm-4 ">
+  <h3>Konsileo</h3>
+      <p style="color: #5F5F5F; font-size: 0.9em;"> <i>
+          To comply with my non-disclosure agreement, I have omitted and obfuscated confidential information in this case study. All information in this case study is my own and does not necessarily reflect the views of Konsileo</i>
+      </p>
+
+      <div class="callout">
+        Over the span of 2 years, I've lead the design including hiring design team member.
+        During this process, I've created several core Konsileo module that are used by more than 200 brokers across UK.
+      </div>
+
+      <br>
+      <h4>Outcome</h4>
+      <p>Since, its launch a year ago, Konsileo’s system has been used to place around £5 million in premiums with only 8 brokers using it and more broker are opting to join the system every day. </p>
+      <h3>i.e. 55% more than the average (£600k+ premium per broker)</h3>
+ 
+      <br>
+      <h6>CONTEXT</h6>
+      <h3>Strict regulatory requirements (FCA) // Archaic process // Age old industry // Used to workarounds </h3>
+  
+      <p>
+        The first business insurance policy was written in the 17th Century. After hundreds of years, brokers still rely heavily on huge
+        paper files, processes that are archaic with many workarounds in place, and old legacy systems which cause huge inefficiencies
+        resulting in brokers spending roughly <strong>60%</strong> of their time on repetitive administrative and operational tasks.
+      <br>
+      <br>
+        There are companies that tried to ‘improve’ insurance broker’s process or move them to a ‘better’ IT system, but all these
+        had resulted in adding yet more admin and paperwork to their already endless list of tasks.
+      <br>
+      <br>
+        In addition, changing the way an entire industry has operated for hundreds of years also mean changing the process brokers has
+        become so familiar with during their career.
+      <br>
+      <br>
+      <img src="./casestudy/assets/kon-openg.jpg" class="img-fluid" alt="Responsive image">
+      <br>
+      <br>
+      OpenGI, a popular software used by insurance broker (see picture).
+      <br>
+      <br>
+      <!-- <h6>GOAL</h6>
+      How might we improve the insurance broking process and empower insurance brokers to build closer relationships with their clients and focus on providing expert services. -->
+
+     </p>
+
+     <h6>RESEARCH</h6>
+     <h3>Understanding the end-to-end journey</h3>
+     <p>
+       Through multiple rounds of user interviews and focus groups with the insurance brokers we identified various operational issues faced by them during their daily work.
+     <br>
+     <br>
+     Followed by this, I ran task analysis sessions to find out inefficiencies in the process and understand different ‘workarounds’ to overcome them.
+    <br>
+   <br>
+    Throughout the focus group and tasks analysis processes, I encouraged my whole team to participate to develop empathy towards the users
+    and understand the operational tasks.
+    <br>
+   <br>
+      The Affinity map aided us to showcase trends, themes, concerns and areas of opportunity for discovery and improvement.
+   </p>
+    <img src="./casestudy/assets/kon-affinity.jpg" class="img-fluid" alt="Responsive image">
+   <br>
+   <br>
+
+   <div class="callout">
+    <h4>
+      Few pain points as mentioned by users:
+    </h4>
+
+    <p>
+    “When I visit a client for Fact finding I need to carry around 20 different paper forms because each type of insurance (e.g. professional indemnity, cyber liability) is captured on a separate form.”
+    <br>
+    <br>
+    “The forms are very rigid and sometimes I need to capture information that is not asked for (or there is no space for) on the form.”
+    <br>
+    <br>
+    “I have to re-key the same information into several different IT systems”
+    </p>
+
+    </div>
+
+     <h3>Framing the problem</h3>
+
+        <p>
+          Triangulating between research on existing tools, interviews, observations and user data provided greater validation and insights.
+          I identified that in the whole processes fixing the form would be the best way to approach this and this also made a storng business case.
+        </p>
+        <br>
+        <br>
+			  <img src="./casestudy/assets/kon-service-overview.jpg" class="img-fluid" alt="Responsive image">
+        <br>
+        <br>
+        <p>
+          Fact find is the most repetitive and time consuming operational tasks, that every broker would do as the first step in knowing about a business client.
+				</p>
+        <p>
+          It is a form filling session where an insurance broker would visit clients premises to understand about the business and gather the essential information in multiple complex paper forms (55+ pages).
+        <br>
+        <br>
+          How might we create a seamless experience of the fact-finding process that would reduce redundancy and the loss of information?</p>
+				</p>
+        <br>
+        <br>
+        <img src="./casestudy/assets/kon-journey.jpg" class="img-fluid" alt="Responsive image">
+        <br>
+        <br>
+
+        <br>
+        <br>
+        <h6>CO-DESIGNING FACT FIND</h6>
+        <h4>Ideating and prototyping</h4>
+
+        <p>
+          It was important that the brokers feel part of the solution, so I invited them for a design studio workshops.
+          The goal of the workshop was to explore a wide set of ideas and also create a shared vision to move forward within a short amount of time.
+        <br>
+        <br>
+          During the sessions, individually and then collaboratively the team ideated and started sketching their ideas.
+        <br>
+        <br>
+        To make the session interactive and soak them fully into the design, I introduced them to Wizard of Oz and Role-playing. I choose Wizard of Oz methodology
+        as this would give the participant full-freedom of interacting with different kind of props and the observers a good understanding of what
+        would be the best option for the devices we could choose. Each one of them would role-play their sketched ideas to replicate a real scenario.
+        <br>
+        <br>
+        </p>
+
+      </div>
+
+      <div class="col-sm-12">
+        <img src="./casestudy/assets/kon-proto.jpg" class="img-fluid" alt="Responsive image">
+        <img src="./casestudy/assets/kon-research.jpg" class="img-fluid" alt="Responsive image">
+      </div>
+
+      
+
+ <div class="col-sm-6 offset-sm-4 ">
+
+						<br>
+						<br>
+
+            By the end of the sessions, there was a convergance of ideas towards
+            using a handheld device similar to a Microsoft Surface or iPad with ability to connect write quickly (keyboard),
+            move things workarounds (touchscreen) with camera facilities,
+            which would be portable as well as would be easy to connect to their large sized monitors once they were in office.
+
+            <br>
+            <br>
+            Furthermore a need of open data integration so that the brokers can easily auto-fill information based on the company data
+            available in the public domain.
+            <br>
+						<br>
+						<!-- It was a strategic design that would not just make the process quicker but more intuitive and broker would happily switch to ripe the benefit of automatic data feed.  -->
+					</p>
+					<!--
+                    <br> <img src="./casestudy/assets/kon-proto3.jpg" class="img-fluid" alt="Responsive image">
+                    <br>
+                  -->
+				<img src="./casestudy/assets/kon-screens.jpg" class="img-fluid" alt="Responsive image">
+					<p class="image-caption">
+						<br>Multiple iterations</p>
+					<br>
+	
+          I took this idea to develop a modular desktop interface that could easily be ported to a surface or iPad.
+					<!-- <p><i>Data feed:</i></p> -->
+					<p> Further, I also took the role of business analyst collaborating with the CEO and the brokers to list the different data feeds that would make their life easy.
+            I listed them in Excel and researched and found 39 different data sources to provide a complete overview of a company, such as Companies house API, ICO registers, Google maps, flood registry, crime data etc.</p>
+					<br> <img src="./casestudy/assets/kon-datafeed.jpg" class="img-fluid" alt="Responsive image">
+					<p class="image-caption">
+						<br>Understanding various data feed for integration</p>
+					<br>
+			
+
+			<br> <img src="./casestudy/assets/kon-flow.jpg" class="img-fluid" alt="Responsive image">
+			<p class="image-caption">
+				<br>Showing part of a Konsileo process flow map (v0.2)</p>
+
+
+			<p><i>Process map:</i></p>
+			<p>Meanwhile I also mapped out a flow diagram to communicate my ideas to the engineering team. Bringing them
+        into the process at the beginning of the design phases proved valuable as we were able to collaborate and further simplify the flow. </p>
+
+			<br>
+			<br>
+
+
+      <h6>TRANSFORM & TEST</h6>
+			<br>
+			<br>
+			<p>Working with the management, development team and product manager, we defined a product roadmap to determine the release sprints.
+        I then created a backlog of items in Jira formed our first sprint. I worked on the user journeys and screen designs based on the order of priority according to the roadmap. I used Sketch Design software to create hi-fi mock-ups and detailed the specifications in the Jira tickets and conducted walk-throughs with the development team out in Serbia.
+				<br>
+				<br>
+
+            </div>
+           <div class="col-sm-12">
+        <img src="./casestudy/assets/kon-finaldesign1.jpg" class="img-fluid" alt="Responsive image">
+        <p class="image-caption">
+				<br>Fact Find
+        </p>
+      <br> <br>
+     
+    <img src="./casestudy/assets/kon-finaldesign2.jpg" class="img-fluid" alt="Responsive image">
+    <p class="image-caption"><br>Prospecting Module</p>
+    <br> <br>
+    <img src="./casestudy/assets/kon-finaldesign4.jpg" class="img-fluid" alt="Responsive image">
+    <p class="image-caption"><br>Client Portal Module</p>
+
+    </div>
+  </div>
+
+        </div>
+          </div>
+
+          
+      </main>
+       <footer class="">
+          <hr>
+        <!-- <div id="wcb" class="carbonbadge"></div><script src="https://unpkg.com/website-carbon-badges@1.1.3/b.min.js" defer></script> -->
+        <p class="text-center">
+          <small> Handcoded (Build v0.34) with Carbon-free software. No data is collected when using this site. No cookies are served. Server runs on renewable energy <a href="https://github.blog/2021-04-22-environmental-sustainability-github/"></a>. </small>
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
+
+
+
+
+
