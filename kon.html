@@ -166,18 +166,91 @@
 
           
       </main>
-       <footer class="">
-          <hr>
-        <!-- <div id="wcb" class="carbonbadge"></div><script src="https://unpkg.com/website-carbon-badges@1.1.3/b.min.js" defer></script> -->
-        <p class="text-center">
-          <small> Handcoded (Build v0.34) with Carbon-free software. No data is collected when using this site. No cookies are served. Server runs on renewable energy <a href="https://github.blog/2021-04-22-environmental-sustainability-github/"></a>. </small>
-        </p>
-      </footer>
-    </div>
-  </body>
+      <footer class="">
+        <hr>
+      <!-- <div id="wcb" class="carbonbadge"></div><script src="https://unpkg.com/website-carbon-badges@1.1.3/b.min.js" defer></script> -->
+     
+
+     
+     
+     
+      <div class="scramble-box text-center">
+          <div class="scramble-text">
+      <p>
+        
+        <small> Handcoded, carbon-free, no data collected, powered by renewables. </small>
+      </p>
+       </div>
+      </div>
+
+      
+    </footer>
+  </div>
+ <script>
+  class TextScrambler {
+constructor(element) {
+  this.element = element;
+  this.originalText = this.element.textContent;
+  this.characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?';
+  this.isScrambling = false;
+
+  this.startScramble();
+
+  this.element.addEventListener('click', () => {
+    if (!this.isScrambling) {
+      this.startScramble();
+    }
+  });
+}
+
+getRandomChar() {
+  return this.characters[Math.floor(Math.random() * this.characters.length)];
+}
+
+startScramble() {
+  if (this.isScrambling) return;
+
+  this.isScrambling = true;
+
+  this.element.textContent = this.originalText
+    .split('')
+    .map(char => (char === ' ' ? ' ' : this.getRandomChar()))
+    .join('');
+
+  setTimeout(() => {
+      this.revealText();
+  }, 200);
+}
+
+revealText() {
+  let iteration = 0;
+
+  const interval = setInterval(() => {
+    this.element.textContent = this.originalText
+      .split('')
+      .map((char, index) => {
+        if (char === ' ') return ' ';
+        if (index < iteration) return this.originalText[index];
+        return this.getRandomChar();
+      })
+      .join('');
+
+    if (iteration >= this.originalText.length) {
+      clearInterval(interval);
+      this.isScrambling = false;
+    }
+
+    iteration += 2;
+  }, 20);
+}
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+const elements = document.querySelectorAll('.scramble-text');
+elements.forEach(el => new TextScrambler(el));
+});
+
+  </script>
+</body>
 </html>
-
-
-
-
 

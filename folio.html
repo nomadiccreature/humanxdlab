@@ -82,7 +82,8 @@
            <br>
         <br>
         <br>
-        <h1>Arindra Das</h1>
+        <h1 class="scramble-text">
+        Arindra Das</h1>
         <p>Design | Research | Product | Strategy</p>
         </div>
         <br>
@@ -132,9 +133,9 @@ I hold a Master’s in Human–Computer Interaction from UCL and began my career
            <p> <a href="pay.html" class="link-colored"> Designing resilient payment infrastructure for the UK government</a> (Case study) 
           </p>
           
-            <p> 
-         Building the front door for UK Government (GOV.UK)
-            </p>
+            <!-- <p> 
+         Building the front door for UK Government
+            </p> -->
            
       
             <p> <a href="odi.html" class="link-colored"> Securing our National Archives for Future Generations</a> (Case study) 
@@ -161,30 +162,30 @@ I hold a Master’s in Human–Computer Interaction from UCL and began my career
 
 
       <br><br><br>
-         <p class="section-title">Writing</p>
-        <p class="section-sub-title">  Blog posts, articles and publications</p>
-       
-
-
- <p> <a href="https://gds.blog.gov.uk/2025/04/01/creating-interactive-design-documentation-for-gov-uk-one-login/" target="_blank" class="link-colored"> Creating interactive design documentation for GOV.UK One Login [GDS blogs]</a>
-     </p>
-       
-      <p> <a href="https://designnotes.blog.gov.uk/2022/08/02/shaping-your-design-history-how-we-got-here-and-whats-next/" target="_blank" class="link-colored"> Shaping your design history: how we got here and what's next [GDS blogs]</a>
-     </p>
-
-      <p><a href="https://theodi.org/insights/reports/archangel-guaranteeing-the-integrity-of-digital-archives/" target="_blank">Guaranteeing the integrity of digital archives [ODI]</a></p>
-                        <p><a href="https://theodi.org/insights/reports/improving-data-and-information-access-in-regulated-sectors-report/" target="_blank">Improving data and information access in regulated sectors [ODI]</a></p>
-                        <p><a href="https://ieeexplore.ieee.org/document/8962204/authors#authors" target="_blank">Tamper-Proofing Video With Hierarchical Attention Autoencoder Hashing on Blockchain [IEEE]</a></p>
-                        <p><a href="https://ukstories.microsoft.com/features/microsoft-is-trying-to-ease-the-uks-social-care-problem-by-using-technology/" target="_blank">Microsoft is trying to ease the UK’s social care problem by using technology [Microsoft Press]</a></p>
-                        <p><a href="">Face parts prediction using artificial neural network from fingerprint [Thesis - IEEE proposal]</a></p>
-                        <p><a href="">Towards designing an interactive multi-player serious game for business education [ACM proposal]</a></p>
-              
-                        
-                        
+      <p class="section-title">Writing</p>
+      <p class="section-sub-title">  Blog posts, articles and publications</p>
      
 
 
-          <br><br><br><br><br>
+<p> <a href="https://gds.blog.gov.uk/2025/04/01/creating-interactive-design-documentation-for-gov-uk-one-login/" target="_blank" class="link-colored"> Creating interactive design documentation for GOV.UK One Login [GDS blogs]</a>
+   </p>
+     
+    <p> <a href="https://designnotes.blog.gov.uk/2022/08/02/shaping-your-design-history-how-we-got-here-and-whats-next/" target="_blank" class="link-colored"> Shaping your design history: how we got here and what's next [GDS blogs]</a>
+   </p>
+
+    <p><a href="https://theodi.org/insights/reports/archangel-guaranteeing-the-integrity-of-digital-archives/" target="_blank">Guaranteeing the integrity of digital archives [ODI]</a></p>
+                      <p><a href="https://theodi.org/insights/reports/improving-data-and-information-access-in-regulated-sectors-report/" target="_blank">Improving data and information access in regulated sectors [ODI]</a></p>
+                      <p><a href="https://ieeexplore.ieee.org/document/8962204/authors#authors" target="_blank">Tamper-Proofing Video With Hierarchical Attention Autoencoder Hashing on Blockchain [IEEE]</a></p>
+                      <p><a href="https://ukstories.microsoft.com/features/microsoft-is-trying-to-ease-the-uks-social-care-problem-by-using-technology/" target="_blank">Microsoft is trying to ease the UK’s social care problem by using technology [Microsoft Press]</a></p>
+                      <p>Face parts prediction using artificial neural network from fingerprint [Thesis - IEEE proposal]</p>
+                      <p>Towards designing an interactive multi-player serious game for business education [ACM proposal]</p>
+            
+                      
+                      
+   
+
+
+        <br><br><br><br><br>
  
           
           </div>
@@ -193,10 +194,87 @@ I hold a Master’s in Human–Computer Interaction from UCL and began my career
       <footer class="">
           <hr>
         <!-- <div id="wcb" class="carbonbadge"></div><script src="https://unpkg.com/website-carbon-badges@1.1.3/b.min.js" defer></script> -->
-        <p class="text-center">
-          <small> Handcoded (Build v0.34) with Carbon-free software. No data is collected when using this site. No cookies are served. Server runs on renewable energy <a href="https://github.blog/2021-04-22-environmental-sustainability-github/"></a>. </small>
+       
+
+       
+       
+       
+        <div class="scramble-box text-center">
+            <div class="scramble-text">
+        <p>
+          
+          <small> Handcoded, carbon-free, no data collected, powered by renewables. </small>
         </p>
+         </div>
+        </div>
+
+        
       </footer>
     </div>
+   <script>
+    class TextScrambler {
+  constructor(element) {
+    this.element = element;
+    this.originalText = this.element.textContent;
+    this.characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?';
+    this.isScrambling = false;
+
+    this.startScramble();
+
+    this.element.addEventListener('click', () => {
+      if (!this.isScrambling) {
+        this.startScramble();
+      }
+    });
+  }
+
+  getRandomChar() {
+    return this.characters[Math.floor(Math.random() * this.characters.length)];
+  }
+
+  startScramble() {
+    if (this.isScrambling) return;
+
+    this.isScrambling = true;
+
+    this.element.textContent = this.originalText
+      .split('')
+      .map(char => (char === ' ' ? ' ' : this.getRandomChar()))
+      .join('');
+
+    setTimeout(() => {
+        this.revealText();
+    }, 200);  // ← Change this number: smaller = faster start
+  }
+
+  revealText() {
+    let iteration = 0;
+
+    const interval = setInterval(() => {
+      this.element.textContent = this.originalText
+        .split('')
+        .map((char, index) => {
+          if (char === ' ') return ' ';
+          if (index < iteration) return this.originalText[index];
+          return this.getRandomChar();
+        })
+        .join('');
+
+      if (iteration >= this.originalText.length) {
+        clearInterval(interval);
+        this.isScrambling = false;
+      }
+
+      iteration += 2; // ← Change this: higher = faster reveal (was 1/3, now 1)
+    }, 20); // ← Change this: smaller = faster animation (was 80, now 30)
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const elements = document.querySelectorAll('.scramble-text');
+  elements.forEach(el => new TextScrambler(el));
+});
+
+    </script>
   </body>
 </html>

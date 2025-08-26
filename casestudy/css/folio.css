@@ -198,3 +198,27 @@ a:hover {
     background: var(--link-color);
     color: var(--bg-color);
   }
+
+
+  
+  .scramble-box {
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    margin-bottom: 1rem;
+}
+.scramble-text {
+    line-height: 1.6;
+    color: var(--text-color);
+    text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+    word-wrap: break-word;
+}
+.scramble-text:hover {
+    text-shadow: 0 0 15px rgba(0, 255, 65, 0.8);
+}
+.instruction {
+    color: var(--text-color);
+    margin-top: 1rem;
+    opacity: 0.8;
+}

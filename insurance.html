@@ -112,14 +112,14 @@
     
 
  <div class="col-sm-6 offset-sm-4 ">
-  <h3>Konsileo</h3>
+  <h3>From paper to platform: Modernising insurance workflows with brokers, for brokers </h3>
       <p style="color: #5F5F5F; font-size: 0.9em;"> <i>
           To comply with my non-disclosure agreement, I have omitted and obfuscated confidential information in this case study. All information in this case study is my own and does not necessarily reflect the views of Konsileo</i>
       </p>
 
       <div class="callout">
-        Over the span of 2 years, I've lead the design including hiring design team member.
-        During this process, I've created several core Konsileo module that are used by more than 200 brokers across UK.
+        Led and scaled Konsileo’s design over 2 years, creating core modules now used by 200+ UK brokers, enabling seamless growth and adoption across the network.
+
       </div>
 
       <br>
@@ -327,18 +327,90 @@
 
           
       </main>
-       <footer class="">
-          <hr>
-        <!-- <div id="wcb" class="carbonbadge"></div><script src="https://unpkg.com/website-carbon-badges@1.1.3/b.min.js" defer></script> -->
-        <p class="text-center">
-          <small> Handcoded (Build v0.34) with Carbon-free software. No data is collected when using this site. No cookies are served. Server runs on renewable energy <a href="https://github.blog/2021-04-22-environmental-sustainability-github/"></a>. </small>
-        </p>
-      </footer>
-    </div>
-  </body>
+      <footer class="">
+        <hr>
+      <!-- <div id="wcb" class="carbonbadge"></div><script src="https://unpkg.com/website-carbon-badges@1.1.3/b.min.js" defer></script> -->
+     
+
+     
+     
+     
+      <div class="scramble-box text-center">
+          <div class="scramble-text">
+      <p>
+        
+        <small> Handcoded, carbon-free, no data collected, powered by renewables. </small>
+      </p>
+       </div>
+      </div>
+
+      
+    </footer>
+  </div>
+ <script>
+  class TextScrambler {
+constructor(element) {
+  this.element = element;
+  this.originalText = this.element.textContent;
+  this.characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?';
+  this.isScrambling = false;
+
+  this.startScramble();
+
+  this.element.addEventListener('click', () => {
+    if (!this.isScrambling) {
+      this.startScramble();
+    }
+  });
+}
+
+getRandomChar() {
+  return this.characters[Math.floor(Math.random() * this.characters.length)];
+}
+
+startScramble() {
+  if (this.isScrambling) return;
+
+  this.isScrambling = true;
+
+  this.element.textContent = this.originalText
+    .split('')
+    .map(char => (char === ' ' ? ' ' : this.getRandomChar()))
+    .join('');
+
+  setTimeout(() => {
+      this.revealText();
+  }, 200);
+}
+
+revealText() {
+  let iteration = 0;
+
+  const interval = setInterval(() => {
+    this.element.textContent = this.originalText
+      .split('')
+      .map((char, index) => {
+        if (char === ' ') return ' ';
+        if (index < iteration) return this.originalText[index];
+        return this.getRandomChar();
+      })
+      .join('');
+
+    if (iteration >= this.originalText.length) {
+      clearInterval(interval);
+      this.isScrambling = false;
+    }
+
+    iteration += 2;
+  }, 20);
+}
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+const elements = document.querySelectorAll('.scramble-text');
+elements.forEach(el => new TextScrambler(el));
+});
+
+  </script>
+</body>
 </html>
-
-
-
-
-
